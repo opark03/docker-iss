@@ -54,7 +54,7 @@ def get_iss_location():
 def write_to_mongo(dtime, long, lat):
     # write output to mongo db
     try:
-        # use an ENV variable for the password
+        export MONGOPASS="20oRGqjmo88JOF0k"
         dbpass = os.getenv('MONGOPASS')
         if not dbpass:
             raise ValueError("MONGOPASS environment variable is not set")
@@ -65,7 +65,7 @@ def write_to_mongo(dtime, long, lat):
         client = MongoClient(connection_string)
 
         # use your UVA computing ID for the database name
-        db = client['mst3k']
+        db = client['rxb8yt']
         collection = db['locations']
         collection.insert_one({'timestamp': dtime, 'longitude': long, 'latitude': lat})
         logger.info('Output written to MongoDB')
